@@ -4,7 +4,7 @@ A baseline demographics summary by treatment arm, built in R from CDISC pilot AD
 
 ## Objective
 
-Summarise age, sex and race for each treatment arm, as in the demographics table of a clinical study report.
+This is my first clinical programming project. I wanted to practise building a baseline demographics table the way it appears in a clinical study report, showing age, sex and race for each treatment group.
 
 ## Data
 
@@ -35,6 +35,13 @@ Summarise age, sex and race for each treatment arm, as in the demographics table
 | Race | White | 78 (90.7%) | 74 (88.1%) | 78 (92.9%) |
 
 Percentages use the number of patients in each treatment arm as the denominator.
+
+## What I learned
+
+- Screen Failure patients were in the dataset (52 of 306), but they never received treatment. I first saw four groups instead of three, so I kept only the Safety population (SAFFL = "Y").
+- Some race categories have no patients in certain groups. I used `complete()` so these rows show as 0 (0.0%) instead of disappearing from the table.
+- I checked my numbers at each step. For example, the sex and race counts in each group add up to the group size (86, 84, 84).
+- I got an error while installing the `pharmaverseadam` package. The cause was a missing dependency, and installing it again fixed the problem.
 
 ## Files
 
