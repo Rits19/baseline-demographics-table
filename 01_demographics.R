@@ -9,7 +9,7 @@ library(tidyr)
 
 adsl <- pharmaverseadam::adsl   # full ADSL: 306 patients
 
-# Keep only patients who received at least one dose.
+# Safety population only (patients who took at least one dose).
 # Screen Failures never got treatment, so they are left out.
 adsl_saf <- adsl %>% filter(SAFFL == "Y")
 
@@ -59,7 +59,7 @@ age_rows <- adsl_saf %>%
   mutate(Variable = "Age (years)")
 
 # Sex rows: n (%) for each arm.
-# complete() adds a row with 0 if a category has no patients in an arm.
+# Without complete(), the American Indian row would be missing for Placebo.
 sex_rows <- adsl_saf %>%
   count(TRT01P, SEX) %>%
   complete(TRT01P, SEX, fill = list(n = 0)) %>%
