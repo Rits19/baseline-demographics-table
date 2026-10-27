@@ -58,6 +58,7 @@ age_rows <- adsl_saf %>%
   pivot_longer(-TRT01P, names_to = "Statistic", values_to = "value") %>%
   mutate(Variable = "Age (years)")
 
+# Percentages use each arm's total as the denominator (checked: they add up to 100 per arm)
 # Sex rows: n (%) for each arm.
 # Without complete(), the American Indian row would be missing for Placebo.
 sex_rows <- adsl_saf %>%
