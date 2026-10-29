@@ -1,4 +1,4 @@
-# Baseline Demographics Table(SAS/R)
+# Baseline Demographics Table (SAS/R)
 
 A baseline demographics summary by treatment arm, built in R and repeated in SAS from CDISC pilot ADSL data.
 
@@ -19,7 +19,7 @@ This is my first clinical programming project. I wanted to practise building a b
 2. Checked treatment-group counts: Placebo 86, Xanomeline High Dose 84, Xanomeline Low Dose 84
 3. Summarised age (mean (SD), median, min, max)
 4. Summarised sex and race as n (%) within each treatment arm, including zero-count categories
-5. Combined everything into one table and saved it as a CSV file
+5. Combined everything into one table and saved it as `demographics_table.csv`
 6. Exported the Safety population (254 patients, 6 columns) to a CSV file
 7. Repeated age, sex and race in SAS (PROC MEANS and PROC FREQ) and checked that the results match R
 
