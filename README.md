@@ -22,7 +22,7 @@ This is my first clinical programming project. I wanted to practise building a b
 5. Combined everything into one table and saved it as `demographics_table.csv`
 6. Exported the Safety population (254 patients, 6 columns) to a CSV file
 7. Repeated age, sex and race in SAS (PROC MEANS and PROC FREQ) and checked that the results match R
-8. Tested whether the arms differ in age (ANOVA) and sex (chi-square test), for practice
+8. Tested whether the arms differ in age (ANOVA) and sex (chi-square test) in R and SAS (PROC GLM and PROC FREQ), for practice
 
 ## Result
 
@@ -43,6 +43,8 @@ Percentages use the number of patients in each treatment arm as the denominator.
 - Age: ANOVA, F(2, 251) = 0.52, p = 0.593
 - Sex: chi-square test, X² = 3.92, df = 2, p = 0.141
 
+SAS gave the same results (ANOVA F = 0.52, p = 0.5934; chi-square X² = 3.92, p = 0.1409).
+
 Neither test shows a clear difference between the arms. In randomised trials, baseline p-values are usually not reported, because chance alone can cause small differences, so these tests were done to practise the methods.
 
 ## What I learned
@@ -55,17 +57,23 @@ Neither test shows a clear difference between the arms. In randomised trials, ba
 - SAS and R gave the same numbers for age, sex and race. SAS shows two decimals, and rounded to one decimal they match R.
 - ANOVA compares the means of three or more groups, and the chi-square test compares counts between groups. Both gave p-values above 0.05, which is what I would expect when patients are randomly assigned.
 
+## Limitations
+
+- The ANOVA and chi-square tests were run for practice. In a real trial, baseline p-values are usually not reported.
+- I did not test race, because some cells have very small counts (for example 1 patient), which makes a plain chi-square unreliable.
+- The final table is saved as a CSV file. The SAS code reproduces the summaries and tests but does not save a combined table.
+
 ## Files
 
 - `01_demographics.R`: R script that builds the table
 - `02_export_for_sas.R`: R script that exports the Safety population as a CSV
 - `adsl_saf.csv`: Safety population data (public CDISC pilot data)
-- `02_demographics.sas`: SAS version of the age, sex and race summaries
+- `02_demographics.sas`: SAS version of the age, sex and race summaries, plus the ANOVA and chi-square tests
 - `demographics_table.csv`: final table from R
 
 ## Tools
 
-R (dplyr, tidyr, pharmaverseadam), SAS (PROC IMPORT, PROC MEANS, PROC FREQ)
+R (dplyr, tidyr, pharmaverseadam), SAS (PROC IMPORT, PROC MEANS, PROC FREQ, PROC GLM)
 
 ## Next steps
 
