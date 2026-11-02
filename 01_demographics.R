@@ -97,3 +97,15 @@ demog_table <- demog_table %>%
 
 dir.create("output", showWarnings = FALSE)
 write.csv(demog_table, "output/demographics_table.csv", row.names = FALSE)
+
+# ---- Do the treatment arms differ at baseline? ----
+# Done for practice. In randomised trials, baseline p-values are usually
+# not reported, because chance alone can make small differences.
+
+# ANOVA: does the mean age differ between the treatment arms?
+age_anova <- aov(AGE ~ TRT01P, data = adsl_saf)
+summary(age_anova)   # F = 0.523, p = 0.593
+
+# Chi-square test: does the sex split differ between the arms?
+sex_test <- chisq.test(table(adsl_saf$TRT01P, adsl_saf$SEX))
+sex_test   # X-squared = 3.92, df = 2, p = 0.141
