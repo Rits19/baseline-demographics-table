@@ -34,3 +34,19 @@ run;
 proc freq data=work.adsl_saf;
     tables TRT01P*RACE / nocol nopercent;
 run;
+
+/* ---- Do the treatment arms differ at baseline? ---- */
+/* Done for practice. In randomised trials, baseline p-values are
+   usually not reported. */
+
+/* ANOVA: does the mean age differ between the treatment arms? */
+proc glm data=work.adsl_saf;
+    class TRT01P;
+    model AGE = TRT01P;
+run;
+quit;
+
+/* Chi-square test: does the sex split differ between the arms? */
+proc freq data=work.adsl_saf;
+    tables TRT01P*SEX / chisq nocol nopercent;
+run;
