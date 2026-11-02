@@ -22,6 +22,7 @@ This is my first clinical programming project. I wanted to practise building a b
 5. Combined everything into one table and saved it as `demographics_table.csv`
 6. Exported the Safety population (254 patients, 6 columns) to a CSV file
 7. Repeated age, sex and race in SAS (PROC MEANS and PROC FREQ) and checked that the results match R
+8. Tested whether the arms differ in age (ANOVA) and sex (chi-square test), for practice
 
 ## Result
 
@@ -38,6 +39,12 @@ This is my first clinical programming project. I wanted to practise building a b
 
 Percentages use the number of patients in each treatment arm as the denominator.
 
+**Tests between arms (for practice):**
+- Age: ANOVA, F(2, 251) = 0.52, p = 0.593
+- Sex: chi-square test, X² = 3.92, df = 2, p = 0.141
+
+Neither test shows a clear difference between the arms. In randomised trials, baseline p-values are usually not reported, because chance alone can cause small differences, so these tests were done to practise the methods.
+
 ## What I learned
 
 - Screen Failure patients were in the dataset (52 of 306), but they never received treatment. I first saw four groups instead of three, so I kept only the Safety population (SAFFL = "Y").
@@ -46,6 +53,7 @@ Percentages use the number of patients in each treatment arm as the denominator.
 - I got an error while installing the `pharmaverseadam` package. The cause was a missing dependency, and installing it again fixed the problem.
 - When I imported the CSV into SAS, the RACE variable was cut to 7 characters, because SAS only checks the first 20 rows by default. "BLACK OR AFRICAN AMERICAN" would have been truncated. Adding `guessingrows=max` fixed it, and RACE now has length 34.
 - SAS and R gave the same numbers for age, sex and race. SAS shows two decimals, and rounded to one decimal they match R.
+- ANOVA compares the means of three or more groups, and the chi-square test compares counts between groups. Both gave p-values above 0.05, which is what I would expect when patients are randomly assigned.
 
 ## Files
 
